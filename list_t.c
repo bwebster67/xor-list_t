@@ -6,9 +6,6 @@
 
 #define XOR(a,b) ((node_t)((uintptr_t)(a) ^ (uintptr_t)(b)))
 
-/* clear; gcc tester.c list_t.c -std=c89 -Wall -Wextra -Werror -Wpedantic -O2 -g; valgrind --leak-check=yes ./a.out */
-
-
 typedef struct node {
 	void *value;
 	void *npx;
@@ -28,13 +25,13 @@ node_t node_new() {
        exit(-1); 
     }
 	ptr->value = NULL;
-	ptr->npx = NULL; /* XOR */
+	ptr->npx = NULL; /* next XOR prev */
 	return ptr;
 }
 
 
 /*
- _: New (a la Python __init__)
+ _: New 
  inputs: none
  outputs: a new list_t containing no values
  side effects: none
@@ -51,7 +48,7 @@ list_t list_new() {
  }
 
 /*
- _: Free (no Python equivalent)
+ _: Free 
  inputs: a list_t l
  outputs: nothing
  side effects: frees all memory associated with l
@@ -96,15 +93,14 @@ void list_free(list_t l) {
 }
 
 /*
- _: Print (a la Python __str__)
- _: Print (a la Python __str__)
+ _: Print
  inputs: a list_t l
  outputs: nothing
  side effects: the elements of l are printed as in python
  example:
  list_print(list_new());
  - should print "[]"
- Note: Prints void *'s as uint64_t's. (use %lu)
+ Note: Prints void *'s as uint64_t's.
  */
 
 void list_print(list_t l) {
@@ -138,7 +134,7 @@ void list_print(list_t l) {
 
 /*
  0: Append
- inputs: a list_t l, a pointer to an memory object of any type x
+ inputs: a list_t l, a pointer to a memory object of any type x
  outputs: nothing
  side effects: x is added to the end of l
  example:
