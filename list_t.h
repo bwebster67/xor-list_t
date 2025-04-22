@@ -2,11 +2,9 @@
 
 /* declares functions in list_t.c */
 
-/* This prevents double-inclusions */
+/* Prevents double-inclusions */
 #ifndef LIST_T
 #define LIST_T
-
-/* Some useful librarys */
 
 #include <stdio.h>
 #include <stdint.h>
@@ -29,7 +27,7 @@ typedef uint64_t bool;
 typedef struct list_t *list_t;
 
 /*
- _: New (a la Python __init__)
+ _: New
  inputs: none
  outputs: a new list_t containing no values
  side effects: none
@@ -37,7 +35,7 @@ typedef struct list_t *list_t;
 list_t list_new();
 
 /*
- _: Free (no Python equivalent)
+ _: Free
  inputs: a list_t l
  outputs: nothing
  side effects: frees all memory associated with l
@@ -45,7 +43,6 @@ list_t list_new();
 void list_free(list_t l);
 
 /*
- _: Print (a la Python __str__)
  _: Print (a la Python __str__)
  inputs: a list_t l
  outputs: nothing
